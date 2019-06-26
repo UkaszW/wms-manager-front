@@ -1,0 +1,26 @@
+.column {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.mat-column- {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mat-header-cell {
+  justify-content: center;
+  text-align: center;
+}
+
+.mat-form-field {
+  margin: 10px;
+}

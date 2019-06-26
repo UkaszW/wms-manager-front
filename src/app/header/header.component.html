@@ -1,0 +1,32 @@
+<mat-toolbar color="primary">
+  <span style="margin-left: 10px">WMS - Manager</span>
+
+  <button mat-button routerLink="/" style="margin-left: 10px">
+    <mat-icon>home</mat-icon>
+  </button>
+
+  <button mat-button *ngIf="authService.isUserLoggedIn()" [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+
+  <mat-menu #menu="matMenu">
+    <a mat-menu-item routerLink="/warehouse">Warehouses</a>
+    <a mat-menu-item routerLink="/item">Items</a>
+  </mat-menu>
+
+  <span class="toolbar-spacer"></span>
+  <div style="position: absolute; right: 25px">
+    <button mat-button style="margin-right: 10px">
+      <mat-icon matBadge="{{unprocessedNotification}}" matBadgePosition="above after"
+                matBadgeColor="accent" routerLink="/notification">notifications</mat-icon>
+    </button>
+    <button mat-raised-button color="accent" *ngIf="authService.isUserLoggedIn()"
+            [routerLink]="['/logout']">Logout
+    </button>
+    <button mat-raised-button color="accent" *ngIf="!authService.isUserLoggedIn()"
+            [routerLink]="['/login']">Login
+    </button>
+  </div>
+
+
+</mat-toolbar>

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClientService} from "../service/http-client.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-warehouse',
@@ -8,16 +9,23 @@ import {HttpClientService} from "../service/http-client.service";
 })
 export class WarehouseComponent implements OnInit {
 
+  displayedColumns: string[] = ['code', 'name', 'address', 'action'];
   warehouses: Array<any>;
 
-  constructor(private httpClientService: HttpClientService) {
+  constructor(private router: Router, private httpClientService: HttpClientService) {
   }
 
   ngOnInit() {
-    this.httpClientService.getAll().subscribe(data => {
+    this.httpClientService.getWarehouses().subscribe(data => {
         this.warehouses = data
       }
     );
+  }
+
+  delete(id) {
+    this.httpClientService.deleteWarehouseBy(id).toPromise().then(data => {
+      location.reload();
+    });
   }
 
 }
