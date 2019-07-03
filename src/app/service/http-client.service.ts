@@ -50,5 +50,4 @@ export class HttpClientService {
   deleteItemBy(id): Observable<any> {
     return this.http.delete(this.ITEM_API + '/' + id)
   }
-
 }

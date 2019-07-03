@@ -8,7 +8,7 @@ import {HttpClientService} from "../service/http-client.service";
 })
 export class ItemComponent implements OnInit {
 
-  displayedColumns: string[] = ['code', 'name', 'quantity', 'status', 'action'];
+  displayedColumns: string[] = ['code', 'name', 'quantity', 'status', 'warehouse', 'action'];
   items: Array<any>;
 
   constructor(private httpClientService: HttpClientService) {

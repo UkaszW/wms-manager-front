@@ -12,6 +12,7 @@ class Item {
     public name: string,
     public quantity: number,
     public status: any,
+    public warehouse: any,
   ) {
   }
 }
@@ -39,7 +40,7 @@ export class ItemAddDialogComponent implements OnInit {
 
   save() {
     let id = this.data.warehouse.id;
-    let item = new Item(this.selectedItem.code, this.selectedItem.name, this.quantity, this.selectedItem.status);
+    let item = new Item(this.selectedItem.code, this.selectedItem.name, this.quantity, this.selectedItem.status, this.data.warehouse);
     this.httpClientService.addItemToWarehouse(id, item).toPromise().then(data => {
       this.dialogRef.close('');
       location.reload();
